@@ -1,0 +1,86 @@
+{
+	"info": {
+		"_postman_id": "bbefcecd-ae43-4fd2-9581-4e86a71f1f7e",
+		"name": "Werkster",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Log in",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.environment.set(\"token\", response.token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"volodymyr.khmil+maid@rolique.io\",\r\n    \"password\": \"qwerty1Q\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api-werksters.qa.rolique.space/api/signin",
+					"protocol": "https",
+					"host": [
+						"api-werksters",
+						"qa",
+						"rolique",
+						"space"
+					],
+					"path": [
+						"api",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Users me",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api-werksters.qa.rolique.space/api/users/me",
+					"protocol": "https",
+					"host": [
+						"api-werksters",
+						"qa",
+						"rolique",
+						"space"
+					],
+					"path": [
+						"api",
+						"users",
+						"me"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
