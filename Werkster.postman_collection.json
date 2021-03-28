@@ -55,6 +55,19 @@
 		},
 		{
 			"name": "Users me",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [
@@ -77,6 +90,40 @@
 						"api",
 						"users",
 						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Favourite",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api-werksters.qa.rolique.space/api/favorites?limit=500",
+					"protocol": "https",
+					"host": [
+						"api-werksters",
+						"qa",
+						"rolique",
+						"space"
+					],
+					"path": [
+						"api",
+						"favorites"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "500"
+						}
 					]
 				}
 			},
