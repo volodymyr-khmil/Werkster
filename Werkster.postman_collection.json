@@ -15,7 +15,7 @@
 							"const response = pm.response.json();\r",
 							"\r",
 							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(201);\r",
+							"    pm.response.to.have.status(200);\r",
 							"});\r",
 							"\r",
 							"pm.environment.set(\"token\", response.token);"
